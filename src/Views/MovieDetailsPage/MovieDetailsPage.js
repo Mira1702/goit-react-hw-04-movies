@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const MovieDetailsPage = () => {
-    return (<h1>This is Movie Details Page</h1>)
-};
+class MovieDetailsPage extends Component {
+    state = {}
+
+    render() {
+        return (
+            <>
+                <h1>Страница одного фильма</h1>
+            </>
+        )
+    }
+}
 
 export default MovieDetailsPage;
