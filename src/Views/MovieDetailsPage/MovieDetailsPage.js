@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Route, NavLink } from 'react-router-dom';
+import Cast from '../Cast/Cast';
+import Reviews from '../Reviews/Reviews';
 import axios from 'axios';
 
 class MovieDetailsPage extends Component {
-    state = {
-        backdrop_path: null,
+    state = {        
         poster_path: null,
         id: null,
         title: null,
@@ -36,7 +38,24 @@ class MovieDetailsPage extends Component {
                             <li key={genre.id}>{genre.name}</li>
                         ))}
                     </ul>
-                </p>                
+                </p>
+                <h3>Additional Information</h3>
+                <ul>
+                    <li><NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink></li>
+                    <li><NavLink to={`${this.props.match.url}/reviews`}>Reviews</NavLink></li>
+                    {/* {this.state.cast.map(item => (
+                        <li key={item.id}>
+                            <NavLink to={`${this.props.match.url}/${item.id}`}>Cast</NavLink>
+                        </li>
+                    ))} */}
+                    {/* {this.state.movies.map(movie => (
+                        <li key={movie.id}>
+                            <NavLink to="/movies/:movieId/reviews">Reviews</NavLink>
+                        </li>
+                    ))} */}
+                </ul>
+                <Route path={`${this.props.match.path}/cast`} component={Cast} />
+                <Route path={`${this.props.match.path}/reviews`} component={Reviews} />
             </>
         )
     }
