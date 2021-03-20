@@ -16,7 +16,7 @@ class HomePage extends Component {
     }
 
     render() {
-        console.log(this.props.match.url)
+        // console.log(this.props.match.url)
         return (
             <>
                 <h1>Список популярных фильмов на сегодня</h1>
