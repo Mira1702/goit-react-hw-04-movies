@@ -3,6 +3,7 @@ import { Route, NavLink } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
 import axios from 'axios';
+import styles from './MovieDetailsPage.module.css';
 
 class MovieDetailsPage extends Component {
     state = {        
@@ -26,26 +27,39 @@ class MovieDetailsPage extends Component {
     render() {
         const { poster_path } = this.state;
         return (
-            <>
-                <h1>Страница одного фильма{this.props.match.params.movieId}</h1>
-                <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt="" width="100" height="100" />
-                <h2>{this.state.title}</h2>
-                <p>User score: {this.state.vote_average}</p>
-                <p>Overview: {this.state.overview}</p>
-                <p>Genre:
+            <>                
+                <div className={styles.MDPContainer}>
+                    <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt="" width="200" height="200" />
+                    <div className={styles.Container}>
+                        <h2>{this.state.title}</h2>
+                        <p>User score: {this.state.vote_average}</p>
+                        <p><h3>Overview</h3>{this.state.overview}</p>
+                        <p><h4>Genre</h4>
+                            <ul className={styles.Genre}>
+                                {this.state.genres.map(genre => (
+                                    <li key={genre.id} className={styles.GenreItem}>{genre.name}</li>
+                                ))}
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+                <div className={styles.AddInf}>
+                    <h4>Additional Information</h4>
                     <ul>
-                        {this.state.genres.map(genre => (
-                            <li key={genre.id}>{genre.name}</li>
-                        ))}
+                        <li className={styles.AddInfItem}>
+                            <NavLink to={`${this.props.match.url}/cast`} className={styles.AddInfItem}>
+                                Cast
+                            </NavLink>
+                        </li>
+                        <li className={styles.AddInfItem}>
+                            <NavLink to={`${this.props.match.url}/reviews`} className={styles.AddInfItem}>
+                                Reviews
+                            </NavLink>
+                        </li>
                     </ul>
-                </p>
-                <h3>Additional Information</h3>
-                <ul>
-                    <li><NavLink to={`${this.props.match.url}/cast`}>Cast</NavLink></li>
-                    <li><NavLink to={`${this.props.match.url}/reviews`}>Reviews</NavLink></li>                    
-                </ul>
-                <Route path={`${this.props.match.path}/cast`} component={Cast} />
-                <Route path={`${this.props.match.path}/reviews`} component={Reviews} />
+                    <Route path={`${this.props.match.path}/cast`} component={Cast} />
+                    <Route path={`${this.props.match.path}/reviews`} component={Reviews} />
+                </div>
             </>
         )
     }

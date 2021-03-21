@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import styles from './HomePage.module.css';
 
 class HomePage extends Component {
     state = {
@@ -19,11 +20,11 @@ class HomePage extends Component {
         // console.log(this.props.match.url)
         return (
             <>
-                <h1>Список популярных фильмов на сегодня</h1>
+                <h1 class={styles.HomePageHeder}>Trending today</h1>
                 <ul>
                     {this.state.movies.map(movie => (
-                        <li key={movie.id}>
-                            <Link to={`${this.props.match.url}${movie.id}`}>{movie.title}</Link>
+                        <li key={movie.id} className={styles.HomePageNavigationItem}>
+                            <Link to={`${this.props.match.url}${movie.id}`} className={styles.NavigationItem}>{movie.title}</Link>
                         </li>
                     ))}
                 </ul>

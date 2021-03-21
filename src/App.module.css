@@ -1,0 +1,47 @@
+html {
+    box-sizing: border-box;
+    width     : 100vw;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    color                  : #212121;
+    background-color       : #fff;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    display  : block;
+    max-width: 100%;
+    height   : auto;
+}
+
+.MainNavigation {
+    display: flex;      
+    padding-bottom: 15px;
+    border-bottom: rgb(202, 192, 192) solid 5px;  
+}
+
+.MainNavigationItem {
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+.NavigationItem {
+    text-decoration: none;
+    color: #212121
+}
+
+.NavigationItem:hover {
+    color: red
+}

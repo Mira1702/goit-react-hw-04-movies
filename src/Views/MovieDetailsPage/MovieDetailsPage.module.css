@@ -1,0 +1,39 @@
+.MDPContainer {
+    display: flex;
+    padding-left: 40px;
+    padding-bottom: 15px;
+    border-bottom : rgb(202, 192, 192) solid 5px;
+}
+
+.Container {
+    font-size: 12px;
+    margin-left: 10px;
+    width: 700px;
+}
+
+.Genre {
+    display: flex;    
+    padding: 0;
+    list-style-type: none;
+}
+
+.GenreItem {
+    margin-right: 5px;    
+}
+
+.AddInf {
+    padding-left: 40px;
+    font-size: 12px;
+    padding-bottom: 15px;
+    border-bottom : rgb(202, 192, 192) solid 5px;
+}
+
+.AddInfItem {
+    list-style: none;
+    text-decoration: none;
+    color: #212121
+}
+
+.AddInfItem:hover {
+    color:red;
+}
