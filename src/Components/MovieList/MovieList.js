@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MoviePageQuary from '../MoviePageQuery/MoviePageQuery';
+import routes from '../../routes';
 
 class MovieList extends Component {
     state = {
         movies: [],
-        location: null,
+        location: null,        
     }
 
     render() {
-        const { movies } = this.state;
+        const { movies, location } = this.state;
         return (
             <ul>
-                {movies.map(({ id, title }) => (
-                    <li key={id}>
-                        <Link to=''>{title}
-                            {/* <MoviePageQuary                                
-                                title={movie.title}
-                            /> */}
+                {movies.map(movie => (
+                    <li key={movie.id}>
+                        <Link to={{
+                            pathname: `${routes.movies}/${movie.id}`,
+                            state: { from: location }
+                           }}>
+                            {movie.original_title}                            
                         </Link>
                     </li>
                 ))}
