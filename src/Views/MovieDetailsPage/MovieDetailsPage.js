@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import Reviews from '../Reviews/Reviews';
-import axios from 'axios';
+import { getMovieDetails } from '../../Servieces/Api';
 import styles from './MovieDetailsPage.module.css';
 
 class MovieDetailsPage extends Component {
@@ -15,13 +15,10 @@ class MovieDetailsPage extends Component {
         vote_average: null,
     }
 
-    async componentDidMount() {
-        const key = '1f52abca7d472783260f83a60d04a4c4';
+    componentDidMount() {
         const { movieId } = this.props.match.params;
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}`);
-        // console.log(response.data)
-
-        this.setState({...response.data})
+        getMovieDetails(movieId).then(data =>
+        this.setState({...data}))
     }
 
     render() {
