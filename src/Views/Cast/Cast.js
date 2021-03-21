@@ -11,9 +11,8 @@ class Cast extends Component {
         const { movieId } = this.props.match.params;
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}&language=en-US`);
         
-
         this.setState({ cast: response.data.cast })
-        console.log(response.data.cast)
+        // console.log(response.data.cast)
     }
 
     render() {
@@ -26,7 +25,7 @@ class Cast extends Component {
                         ) :null}
                         <p>{item.name}</p>
                         <p>Character: {item.character}</p>
-                        </li>
+                    </li>
                 ))}                
             </ul>            
         )
@@ -34,7 +33,3 @@ class Cast extends Component {
 }
 
 export default Cast;
-
-{/* <img src={`https://image.tmdb.org/t/p/w300/${profile_path}`} alt="" width="100" height="100" />
-                <p>{this.state.name}</p>
-                <p>Character: {this.state.character}</p> */}
