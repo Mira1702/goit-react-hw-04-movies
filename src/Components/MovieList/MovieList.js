@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import MoviePageQuary from '../MoviePageQuery/MoviePageQuery';
+// import MoviePageQuary from '../MoviePageQuery/MoviePageQuery';
 import routes from '../../routes';
 
 class MovieList extends Component {
