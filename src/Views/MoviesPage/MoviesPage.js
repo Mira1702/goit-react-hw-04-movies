@@ -19,8 +19,7 @@ class MoviesPage extends Component {
 
     SearchMovies = event => {
         event.preventDefault();
-        getMoviesList(this.state.query).then(results => {
-            // this.props.history.push({ search: `?query=${this.state.query}` });
+        getMoviesList(this.state.query).then(results => {            
             this.setState({...results});        
         })
     }
