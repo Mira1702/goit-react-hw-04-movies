@@ -13,7 +13,7 @@ class MovieDetailsPage extends Component {
         title: null,
         genres: [],
         overview: null,
-        vote_average: null,        
+        vote_average: null        
     }
 
     componentDidMount() {
@@ -25,6 +25,7 @@ class MovieDetailsPage extends Component {
     goBackButton = () => {
         const { location, history } = this.props;
         history.push(location?.state?.from || routes.home);
+        
     }
     
     render() {
