@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { getMoviesList } from '../../Servieces/Api';
+import routes from '../../routes';
 
 
 class MoviesPage extends Component {
@@ -39,7 +40,7 @@ class MoviesPage extends Component {
                             <li key={movie.id}>
                                 <NavLink
                                     to={{
-                                        pathname: `${this.props.match.url}/${movie.id}}`,
+                                        pathname: `${routes.movies}/${movie.id}}`,
                                         state: this.props.location.state,
                                     }}
                                 >
