@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getMoviesList } from '../../Servieces/Api';
 import queryString from 'query-string';
@@ -6,26 +6,26 @@ import queryString from 'query-string';
 class MoviesPage extends Component {
     state = {
         movies: [],
-        query: '',        
+        query: '',
     }
 
-    componentDidMount() {
-        const queryParams = queryString.parse(this.props.location.search);
-        if (queryParams.query) {
-            getMoviesList(queryParams.query).then(queryMovies =>
-                this.setState({movies: queryMovies}))
-        }
-    }
+    // componentDidMount() {
+    //     const queryParams = queryString.parse(this.props.location.search);
+    //     if (queryParams.query) {
+    //         getMoviesList(queryParams.query).then(queryMovies =>
+    //             this.setState({ movies: queryMovies }))
+    //     }
+    // }
 
     SearchMovies = event => {
         event.preventDefault();
-        getMoviesList(this.state.query).then(results => {            
-            this.setState({...results});        
+        getMoviesList(this.state.query).then(({results}) => {
+            this.setState({movies: results });
         })
     }
 
     handleForm = event => {
-        this.setState({ query: event.target.value})
+        this.setState({ query: event.target.value })
     }
 
     render() {
@@ -43,14 +43,12 @@ class MoviesPage extends Component {
                     <button type="submit" onSubmit={this.SearchMovies}>Search</button>
                 </form>
                 <ul>
-                    {movies &&
-                        movies.length > 0 &&
+                    {movies.length > 0 &&
                         movies.map((movie) => (
                             <li key={movie.id}>
                                 <NavLink
                                     to={{
-                                        pathname: `/movies/${String(movie.id)}`,
-                                        state: { query, movies },
+                                        pathname: `/movies/${String(movie.id)}`
                                     }}
                                 >
                                     {movie.original_title}
@@ -77,7 +75,7 @@ export default MoviesPage;
 //     const [movies, setMoveis] = useState(
 //         location.state ? location.state.movies : []
 //     );
-    
+
 //     // componentDidMount() {        
 //     //     const queryParams = queryString.parse(this.props.location.search);
 //     //     if (queryParams.query) {
@@ -90,7 +88,7 @@ export default MoviesPage;
 //         setQuery(event.target.value)
 //     }
 
-    
+
 //     // SearchMovies = event => {
 //     //     event.preventDefault();
 //     //     getMoviesList(this.state.query).then(queryMovies => {
@@ -110,8 +108,8 @@ export default MoviesPage;
 //         })
 //     }
 
-    
-        
+
+
 //     return (
 //         <>
 //             <h1>Cтраница поиска фильмов по ключевому слову</h1>
@@ -144,6 +142,6 @@ export default MoviesPage;
 //             {/* {movies && (<MovieList movies={movies} location={this.props.location} />)}                                 */}
 //         </>
 //     )
-    
+
 
 // }
