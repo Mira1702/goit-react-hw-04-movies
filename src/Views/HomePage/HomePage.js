@@ -21,7 +21,7 @@ class HomePage extends Component {
                 <ul>
                     {this.state.movies.map(movie => (
                         <li key={movie.id} className={styles.HomePageNavigationItem}>
-                            <Link to={`${this.props.match.url}${movie.id}`} className={styles.NavigationItem}>{movie.title}</Link>
+                            <Link to={`/movies/${movie.id}`} className={styles.NavigationItem}>{movie.title}</Link>
                         </li>
                     ))}
                 </ul>

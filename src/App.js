@@ -1,13 +1,11 @@
 import React from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import HomePage from './Views/HomePage/HomePage';
 import MoviesPage from './Views/MoviesPage/MoviesPage';
 import MovieDetailsPage from './Views/MovieDetailsPage/MovieDetailsPage';
-import NotFound from './Views/NotFound/NotFound';
+import routes from './routes';
 import styles from './App.module.css';
 
-// import Cast from './Views/Cast';
-// import Reviews from './Views/Reviews';
 
 const App = () => (
   <>
@@ -17,16 +15,13 @@ const App = () => (
         </li>
         <li className={styles.MainNavigationItem}>
           <NavLink to="/movies" className={styles.NavigationItem}>Movies</NavLink>
-        </li>
-        {/* <li>
-          <NavLink to="/movies/:movieId" className={styles.MainNavigationItem}>Movie Details Page</NavLink>
-        </li> */}
+        </li>        
       </ul>
       <Switch>
-        <Route exact path="/" component={HomePage} />       
-        <Route exact path="/movies" component={MoviesPage} />
-        <Route path="/:movieId" component={MovieDetailsPage} />
-        <Route component={NotFound} />
+      <Route exact path={routes.home} component={HomePage} />
+      <Route path={routes.movieDetailsPage} component={MovieDetailsPage} />
+      <Route exact path={routes.movies} component={MoviesPage} />
+      <Redirect to={routes.home} />
       </Switch>      
   </>
 )
